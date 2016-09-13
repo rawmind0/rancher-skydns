@@ -16,15 +16,14 @@ EOF
 cat << EOF > ${SERVICE_VOLUME}/confd/etc/templates/skydns-source.tmpl
 #!/usr/bin/env bash
 
-export ETCD_MACHINES=
+export ETCD_MACHINES="
 {{- \$etcd_link := split (getenv "ETCD_SERVICE") "/" -}}
 {{- \$etcd_stack := index \$etcd_link 0 -}}
 {{- \$etcd_service := index \$etcd_link 1 -}} 
 {{- range \$i, \$e := ls (printf "/stacks/%s/services/%s/containers" \$etcd_stack \$etcd_service) -}}
   {{- if \$i -}},{{- end -}}
-  http://{{- getv (printf "/stacks/%s/services/%s/containers/%s/primary_ip" \$etcd_stack \$etcd_service \$e)-}}:\${ETCD_PORT}
-{{- end -}}
-
+  http://{{getv (printf "/stacks/%s/services/%s/containers/%s/primary_ip" \$etcd_stack \$etcd_service \$e)}}:${ETCD_PORT}
+{{- end }}"
 export ETCD_MACHINES=${ETCD_MACHINES:-"http://etcd:2379"}
 export SKYDNS_ADDR=${SKYDNS_ADDR:-"0.0.0.0:5353"}
 export SKYDNS_DOMAIN=${SKYDNS_DOMAIN:-"dev.local"}
