@@ -13,7 +13,7 @@ docker build -t rawmind/rancher-skydns:<version> .
 
 ## Versions
 
-- `2.5.3` [(Dockerfile)](https://github.com/rawmind0/rancher-skydns/blob/2.5.3/README.md)
+- `2.5.3-1` [(Dockerfile)](https://github.com/rawmind0/rancher-skydns/blob/2.5.3-1/README.md)
 
 
 ## Usage
