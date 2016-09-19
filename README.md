@@ -21,5 +21,5 @@ docker build -t rawmind/rancher-skydns:<version> .
 This image has to be run as a sidekick of [alpine-skydns][alpine-skydns], and makes available /opt/tools volume. It scans from rancher-metadata, for a etcd stack and service, and generates etcd connection string dynamicly.
 
 
-[alpine-skydns]: https://github.com/rawmind0/alpine-kafka
+[alpine-skydns]: https://github.com/rawmind0/alpine-skydns
 [rancher-tools]: https://github.com/rawmind0/rancher-tools
